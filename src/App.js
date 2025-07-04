@@ -4,6 +4,7 @@ import { signInWithPopup, signOut } from 'firebase/auth';
 import './App.css';
 import TransformationList from './components/TransformationList';
 import CaseStudyList from './components/CaseStudyList';
+import TestimonialList from './components/TestimonialList';
 
 function App() {
   const [user, setUser] = useState(() => auth.currentUser);
@@ -44,13 +45,16 @@ function App() {
       </div>
       <div style={{margin:'30px 0'}}>
         <button onClick={()=>setTab('transformations')} style={{marginRight:10,background:tab==='transformations'?'#2ecc71':'#eee',color:tab==='transformations'?'#fff':'#333',padding:'10px 20px',border:'none',borderRadius:5}}>Transformations</button>
-        <button onClick={()=>setTab('caseStudies')} style={{background:tab==='caseStudies'?'#2ecc71':'#eee',color:tab==='caseStudies'?'#fff':'#333',padding:'10px 20px',border:'none',borderRadius:5}}>Case Studies</button>
+        <button onClick={()=>setTab('caseStudies')} style={{marginRight:10,background:tab==='caseStudies'?'#2ecc71':'#eee',color:tab==='caseStudies'?'#fff':'#333',padding:'10px 20px',border:'none',borderRadius:5}}>Case Studies</button>
+        <button onClick={()=>setTab('testimonials')} style={{background:tab==='testimonials'?'#2ecc71':'#eee',color:tab==='testimonials'?'#fff':'#333',padding:'10px 20px',border:'none',borderRadius:5}}>Testimonials</button>
       </div>
       <div>
         {tab === 'transformations' ? (
           <TransformationList />
-        ) : (
+        ) : tab === 'caseStudies' ? (
           <CaseStudyList />
+        ) : (
+          <TestimonialList />
         )}
       </div>
     </div>
